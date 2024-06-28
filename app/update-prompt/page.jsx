@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 
 import { Form } from "@components/Form";
 
@@ -31,7 +30,7 @@ const EditPrompt = () => {
 
     if (!promptId) return alert("Prompt ID not found");
 
-    try {useSearchParams() should be wrapped in a suspense boundary at page
+    try {
       const response = await fetch(`/api/prompt/${promptId}`, {
         method: "PATCH",
         body: JSON.stringify({
@@ -50,7 +49,6 @@ const EditPrompt = () => {
   };
 
   return (
-    <Suspense>
     <Form
       type="Update"
       post={post}
@@ -58,7 +56,6 @@ const EditPrompt = () => {
       submitting={submitting}
       handleSubmit={updatePrompt}
     />
-    </Suspense>
   );
 };
 
